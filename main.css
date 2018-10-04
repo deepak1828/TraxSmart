@@ -1,0 +1,91 @@
+body{
+	background: #dff3fb;
+	height: 100%;
+	font-family: 'Courgette', cursive;
+}
+.bodyStarts {
+	margin: 1% auto; 
+}
+.mainDivBody{
+	margin: 1% auto !important;
+}
+.panel{
+	background: #fff;
+  	border-radius: 10px;
+  	-webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  	-moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0,1);
+  	box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.7);
+}
+.headingText {
+	background:  #900C3F;
+	color:  #f4f4fc;
+    padding: 0.20em;
+}
+.problemDefinition{
+	padding:0 0.5em 0.25em 0.5em;
+}
+.btn-search {
+	background: #424242;
+	border-radius: 0;
+	color: #fff;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1c1c1c;
+}
+.btn-search:link, .btn-search:visited {
+	color: #fff;
+}
+.btn-search:active, .btn-search:hover {
+	background: #1c1c1c;
+	color: #fff;
+}
+
+/* Search list CSS starts */
+.searchListAndMovie{
+	background: #dff3fb;
+	padding: 2%;
+	border-radius: 5px;
+	margin-top: 4%;
+	margin-left: 3%;
+	margin-bottom: 2%;
+}
+.movieDetails{
+	background: #dff3fb;
+	padding: 1%;
+	border-radius: 5px;
+	margin: 1%;
+}
+.searchDataFont{
+	font-size: 0.8em;
+	margin-bottom: 0;
+}
+.movieNameDetails{
+	color: brown;
+}
+.searchOverview{
+	color: #646565;
+	margin-bottom: 1%; 
+	border-bottom: 1px solid lightblue;
+	font-size:0.8em;
+	/*width: 250px;*/
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Search list CSS ends */
+
+.genresDesign{
+	display: block;
+	background: none;
+	border: 1px solid blue;
+	border-radius: 25px;
+}
+.heartSymbol{
+	color: red;
+}
+.moreInfo{
+	cursor: pointer; 
+	float: right;
+	margin-bottom: 1%; 
+	font-size: 0.8em;
+}

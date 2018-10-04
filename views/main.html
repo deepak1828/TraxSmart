@@ -1,0 +1,122 @@
+
+<div class="container-fluid">
+  <div class="row bodyStarts">
+    <div class="col-lg-12 col-md-12">
+      <form name="movieSearchForm" class="form-search form-horizontal" ng-submit="searchMovieName(movieName)" novalidate href="#search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter movie name.." ng-model="movieName.name" required/>
+          <span class="input-group-btn">
+            <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw"></i> Search
+            </button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%;" ng-hide="searchedMovieData">
+	<div class="col-lg-12 col-md-12">
+	  <div class="panel">
+		<div class="panel-heading headingText">
+		  <h5 class="panel-title"><b style="padding-left: 0.3em;">About the problem</b></h5>
+		</div>
+		<div class="panel-body">
+		  <p class="problemDefinition">
+		  	Our problem is to create a movie portal. The portal consisting of 3 main components - 
+		  </p>
+		  <p class="problemDefinition">
+		  	=> A search component for searching movie names
+		  	<br>
+		  	=> A listing component for listing the search results <br>
+		  	=> A movie details component, for showing the details of the movie that was selected from the list
+		  </p>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="container-fluid bodyStarts" ng-controller="MainController as mainCtrl" ng-if="searchedMovieData">
+  <div class="row panel">
+    <!-- <div class="row"> -->
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="searchListAndMovie" ng-repeat="item in displaySearchData track by $index">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+             <span ng-if="item.poster_path"><img ng-src="https://image.tmdb.org/t/p/original/{{item.poster_path}}" class="image-responsive" width="60"/></span> 
+             <span ng-if="!item.poster_path"><img src="images/dummyMovie.jpg" class="image-responsive" width="60"/></span> 
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+              <p class="searchDataFont">Movie - <span class="movieNameDetails">{{item.original_title}}</span></p>
+              <p class="searchDataFont">Ratings - <span class="movieNameDetails">{{item.vote_average}}</span></p>
+              <p class="searchDataFont">Release Date - <span class="movieNameDetails">{{item.release_date}}</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <p class="searchOverview">{{item.overview}}</p>
+            </div>
+          </div>
+          <div class="row">
+          	<div class="col-md-12 col-sm-12 col-xs-12">
+          		<p ng-click="getParticularMovieData(item.id)" class="moreInfo">More Info 
+          		  <i class="fa fa-arrow-right" style="color: green;"></i>
+          		</p>
+          	</div>
+          </div>
+        <center ng-if="loadingImage">
+          <img src="images/loading.gif" class="image-responsive">
+        </center>
+        </div>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" id="completeDetails">
+        <div class="movieDetails" ng-if="selectedMovie">
+          <center ng-if="loadingImage">
+          	<img src="images/loading.gif" class="image-responsive">
+          </center>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <center ng-if="selectedMovieImage">
+                <img ng-src="https://image.tmdb.org/t/p/original/{{selectedMovieImage}}" class="image-responsive" width="50%" height="400px">
+              </center>
+              <center ng-if="!selectedMovieImage">
+                <img src="images/dummyMovie.jpg" class="image-responsive" width="50%" height="400px">
+              </center>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <center>
+                <h4 style="color: #dc7633;">{{selectedMovie.title}}</h4>
+                <p style="color: #85929e;">{{selectedMovie.tagline}}
+                </p>
+                <div class="row">
+              	  <div class="col-md-4 col-sm-4 col-xs-12">
+              	  	<p ng-repeat="i in selectedMovie.genres" class="genresDesign">{{i.name}}</p>
+              	  </div>
+              	  <div class="col-md-4 col-sm-4 col-xs-12">
+              	  	<p style="font-size: 1.25em;">
+              	  		<i class="fa fa-heart heartSymbol" aria-hidden="true"></i>{{selectedMovie.popularity | number:0}} %
+              	  	</p>	
+              	  </div>
+              	  <div class="col-md-4 col-sm-4 col-xs-12">
+              	  	<p> Duration - <span style="color: #e74c3c;">{{movieDuration | number:2}} hours</span></p>
+              	  </div>
+              	</div>
+              </center>
+              <h5 style="color: #f39c12;">Overview</h5>
+              <p style="color: brown;">{{selectedMovie.overview}}</p>
+              <p ng-if="selectedMovie.homepage">Watch movie here - <span><a ng-href="{{selectedMovie.homepage}}" target="_blank">{{selectedMovie.homepage}}</a></span></p>
+              <p ng-if="!selectedMovie.homepage">Watch movie here - <span style="color: blue;">No link available for this movie</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="movieDetails" ng-if="!selectedMovie">
+          <center>
+          	<h4 style="color: red;">Select a movie from list to view details here.</h4>
+          </center>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+</div> 
+</div>
